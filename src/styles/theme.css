@@ -1,0 +1,52 @@
+@import "./colors.css";
+@import "./colors-dark.css";
+
+:root {
+  color: var(--color-text);
+  background-color: rgb(from var(--color-base) r g b / 0.7);
+}
+
+body {
+    margin: 0;
+}
+
+button {
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-text);
+  height: 20rem;
+  width: 10rem;
+}
+
+button:hover,
+button:active {
+  color: var(--color-lavender);
+  background-color: var(--color-text);
+  border: 1px solid var(--color-lavender);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--color-text-dark);
+    background-color: rgb(from var(--color-base-dark) r g b / 0.7);
+  }
+
+  button {
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-text-dark);
+  }
+
+  button:hover,
+  button:active {
+    color: var(--color-lavender-dark);
+    background-color: var(--color-text);
+    border: 1px solid var(--color-lavender-dark);
+  }
+}
+
+#buttons {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

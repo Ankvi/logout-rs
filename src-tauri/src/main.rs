@@ -1,7 +1,8 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use std::process::{Command};
+use std::collections::HashMap;
+use std::process::Command;
 
 #[tauri::command]
 fn notify() {
@@ -13,9 +14,28 @@ fn notify() {
     println!("Notification sent");
 }
 
+#[tauri::command]
+fn run_command(command: &str) {
+    let commands = HashMap::from([
+        ("lock", "echo 'lock'"),
+        ("reboot", "systemctl reboot"),
+        ("shutdown", "systemctl poweroff"),
+        ("log-out", "echo 'log out'"),
+    ]);
+
+    if !commands.contains_key(command) {
+        println!("Command does not exist");
+        return;
+    }
+
+    let system_command = commands.get(command);
+    println!("Running command '{}'", system_command.unwrap());
+}
+
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![notify])
+        .invoke_handler(tauri::generate_handler![run_command])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
