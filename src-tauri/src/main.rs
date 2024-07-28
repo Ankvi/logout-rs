@@ -30,6 +30,10 @@ fn run_command(command: &str) {
 
     let system_command = commands.get(command);
     println!("Running command '{}'", system_command.unwrap());
+
+    Command::new(system_command.unwrap())
+        .spawn()
+        .expect("Could not execute command");
 }
 
 fn main() {
