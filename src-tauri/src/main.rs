@@ -17,10 +17,10 @@ fn notify() {
 #[tauri::command]
 fn run_command(command: &str) {
     let commands = HashMap::from([
-        ("lock", "echo 'lock'"),
+        ("lock", "loginctl lock-session"),
         ("reboot", "systemctl reboot"),
         ("shutdown", "systemctl poweroff"),
-        ("log-out", "echo 'log out'"),
+        ("log-out", "loginctl terminate-user $USER"),
     ]);
 
     if !commands.contains_key(command) {

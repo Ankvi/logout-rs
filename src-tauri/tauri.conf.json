@@ -35,7 +35,7 @@
     },
     "bundle": {
       "active": true,
-      "targets": "all",
+      "targets": "updater",
       "identifier": "com.kengachu.logout",
       "icon": [
         "icons/32x32.png",
