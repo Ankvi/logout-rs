@@ -7,22 +7,25 @@
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 button {
   color: var(--color-text);
   background-color: transparent;
+  animation: gradient_f 20s ease-in infinite;
   border: 1px solid var(--color-text);
   height: 20rem;
   width: 10rem;
 }
 
 button:hover,
-button:active {
+.active {
   color: var(--color-lavender);
   background-color: var(--color-text);
   border: 1px solid var(--color-lavender);
+  height: 30rem;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,8 +48,8 @@ button:active {
 }
 
 #buttons {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
